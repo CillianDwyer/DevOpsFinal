@@ -1,4 +1,5 @@
 import unittest
+from sudoku import solve_sudoku  # Ensure you import the function to test
 
 class TestSudokuSolver(unittest.TestCase):
 
