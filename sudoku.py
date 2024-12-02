@@ -1,13 +1,14 @@
-def is_valid(board, row, col, num):
-    # Check if the number is not in the current row, column, and 3x3 grid
-    for i in range(9):
-        if board[row][i] == num or board[i][col] == num:
-            return False
-    start_row, start_col = 3 * (row // 3), 3 * (col // 3)
-    for i in range(3):
-        for j in range(3):
-            if board[start_row + i][start_col + j] == num:
-                return False
+def is_valid_board(board):
+    if len(board) != 9:
+        raise ValueError("Board must have 9 rows")
+    for row in board:
+        if len(row) != 9:
+            raise ValueError("Each row must have 9 columns")
+        for num in row:
+            if num < 0 or num > 9:
+                raise ValueError("Board values must be between 0 and 9")
+            if not isinstance(num, int):
+                raise ValueError("Board values must be integers")
     return True
 
 def solve_sudoku(board):
